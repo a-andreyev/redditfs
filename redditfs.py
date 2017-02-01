@@ -108,7 +108,7 @@ class RedditFS(fuse.Operations):
 
     def _populate_subreddit(self, subreddit):
         r = requests.get(
-            'http://api.reddit.com/r/{}/hot'.format(subreddit),
+            'https://api.reddit.com/r/{}/hot.json'.format(subreddit),
             headers={
                 'User-Agent': 'redditfs /u/evilyomiel'
             },
@@ -138,7 +138,7 @@ class RedditFS(fuse.Operations):
         filename = self._sanitize_path(title)
 
         permalink = urlparse.urljoin(
-            'http://www.reddit.com/',
+            'https://www.reddit.com/',
             zelda['permalink']
         )
         url = zelda['url']
